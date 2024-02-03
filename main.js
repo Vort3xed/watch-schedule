@@ -2,14 +2,11 @@ window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'GTM-M42T6RJJ');
+  gtag('config', 'UA-146662310-1');
 
   (async function() {
   "use strict";
 
-  /**
-   * Easy selector helper function
-   */
   const select = (el, all = false) => {
     el = el.trim()
     if (all) {
@@ -19,9 +16,6 @@ window.dataLayer = window.dataLayer || [];
     }
   }
 
-  /**
-   * Easy event listener function
-   */
   const on = (type, el, listener, all = false) => {
     let selectEl = select(el, all)
     if (selectEl) {
@@ -33,16 +27,10 @@ window.dataLayer = window.dataLayer || [];
     }
   }
 
-  /**
-   * Easy on scroll event listener 
-   */
   const onscroll = (el, listener) => {
     el.addEventListener('scroll', listener)
   }
 
-  /**
-   * Back to top button
-   */
   let backtotop = select('.back-to-top')
   if (backtotop) {
     const toggleBacktotop = () => {
@@ -63,8 +51,6 @@ window.dataLayer = window.dataLayer || [];
   const largeOutput = countdown.innerHTML;
 
   const periodoutput = document.getElementsByClassName('period')[0].innerHTML;
-  const typeoutput = document.getElementsByClassName('stype')[0].innerHTML;
-  const dateoutput = document.getElementsByClassName('date')[0].innerHTML;
   const timeuntiloutput = document.getElementsByClassName('timeuntil')[0].innerHTML;
   var goal = 24420;
   var period = ""
@@ -77,7 +63,6 @@ window.dataLayer = window.dataLayer || [];
 
   const updateSchedule = function() {
     calculateGoal()
-    // var myArray = [['test', 'test'], ['test','testtest']]
 
     var result = '';
 
@@ -99,7 +84,6 @@ window.dataLayer = window.dataLayer || [];
         result += "</tr>";
     }
 
-    document.getElementsByClassName('scheds')[0].innerHTML = result;
   }
   const proccessTime = function(time) {
     if (Math.floor(time/60/60) > 12){
@@ -172,7 +156,6 @@ window.dataLayer = window.dataLayer || [];
   }
   const countDownDate = function() {
     calculateGoal();
-    // console.log(data['8/22'])
     const date = new Date();
 
     const day = date.getDate();
@@ -182,8 +165,6 @@ window.dataLayer = window.dataLayer || [];
     if (!(str in data)){
       str = "base"
     }
-
-    // console.log(data[str])
 
     var cur = date.getHours();
 
@@ -204,9 +185,7 @@ window.dataLayer = window.dataLayer || [];
     document.title = countdown.innerHTML + " - PHS Schedule"
     
     document.getElementsByClassName('period')[0].innerHTML = periodoutput.replace('%d',period)
-    document.getElementsByClassName('stype')[0].innerHTML = typeoutput.replace('%a',data[str][0])
 
-    console.log(rawArray[period], val, prevK);
     document.getElementById("percentageCircle").style.strokeDasharray = `${(rawArray[period][1]-val)/(rawArray[period][1] - rawArray[period][0])*659}, 659`;
     document.getElementById("largePercentageCircle").style.strokeDasharray = `${(rawArray[period][1]-val)/(rawArray[period][1] - rawArray[period][0])*1086}, 1086`;
 
@@ -217,8 +196,6 @@ window.dataLayer = window.dataLayer || [];
     var yeare = dateObj.getFullYear();
 
     var newdate = monthe + "/" + daye + "/" + yeare;
-
-    document.getElementsByClassName('date')[0].innerHTML = dateoutput.replace('%ss',newdate)
 
   }
   updateSchedule()
